@@ -12,7 +12,7 @@ class StoreUserAction
 {
     public function execute(UserDto $userDto): User
     {
-        $user = new User();
+        $user = new User;
 
         $user->name = $userDto->name;
         $user->email = $userDto->emailAddress;
@@ -20,7 +20,7 @@ class StoreUserAction
 
         $user->save();
 
-        $user->notify(new UserRegisteredNotification());
+        $user->notify(new UserRegisteredNotification);
 
         return $user;
     }

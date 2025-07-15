@@ -14,6 +14,7 @@ use Lightit\Backoffice\Users\App\Notifications\UserRegisteredNotification;
 use Lightit\Backoffice\Users\App\Resources\UserResource;
 use Lightit\Backoffice\Users\Domain\Models\User;
 use Tests\RequestFactories\StoreUserRequestFactory;
+
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
 use function Pest\Laravel\postJson;
@@ -39,7 +40,7 @@ dataset(name: 'validation-rules', dataset: [
 
     'email is required' => ['email_address', ''],
     'email be valid' => ['email_address', 'esthernjerigmail.com'],
-    'email not too long' => ['email_address', fn (): string => getLongName() . '@gmail.com'],
+    'email not too long' => ['email_address', fn (): string => getLongName().'@gmail.com'],
     'email be unique' => ['email_address', fn (): string => getATakenEmail()],
 
     'password is required' => ['password', ''],
@@ -66,8 +67,7 @@ describe('users', function (): void {
         $response
             ->assertCreated()
             ->assertJson(
-                fn (AssertableJson $json): AssertableJson =>
-                $json->has(
+                fn (AssertableJson $json): AssertableJson => $json->has(
                     'data',
                     fn (AssertableJson $json): AssertableJson => $json->whereAll(
                         UserResource::make($user)->resolve()

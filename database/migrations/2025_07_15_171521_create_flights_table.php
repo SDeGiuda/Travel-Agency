@@ -12,11 +12,11 @@ return new class extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("origin_id")->constrained("cities");
-            $table->foreignId("destination_id")->constrained("cities");
-            $table->foreignId("airline")->constrained("airlines");
-            $table->dateTime("departure_time");
-            $table->dateTime("arrival_time");
+            $table->foreignId('origin_id')->constrained('cities');
+            $table->foreignId('destination_id')->constrained('cities');
+            $table->foreignId('airline')->constrained('airlines');
+            $table->dateTime('departure_time');
+            $table->dateTime('arrival_time');
         });
     }
 

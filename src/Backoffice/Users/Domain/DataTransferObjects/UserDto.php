@@ -10,6 +10,5 @@ class UserDto
         public readonly string $name,
         public readonly string $emailAddress,
         public readonly string $password,
-    ) {
-    }
+    ) {}
 }

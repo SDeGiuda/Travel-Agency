@@ -11,13 +11,11 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Lightit\Backoffice\Users\Domain\Models\User;
 
-class UserRegisteredNotification extends Notification implements ShouldQueue, ShouldBeEncrypted
+class UserRegisteredNotification extends Notification implements ShouldBeEncrypted, ShouldQueue
 {
     use Queueable;
 
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * @return array<int, string>
@@ -30,8 +28,8 @@ class UserRegisteredNotification extends Notification implements ShouldQueue, Sh
     public function toMail(User $notifiable): MailMessage
     {
         return new MailMessage()
-                    ->line("Welcome $notifiable->name, to our application Example.")
-                    ->action('Our web', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line("Welcome $notifiable->name, to our application Example.")
+            ->action('Our web', url('/'))
+            ->line('Thank you for using our application!');
     }
 }

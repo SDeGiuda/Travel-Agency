@@ -28,7 +28,7 @@ abstract class HttpException extends BaseHttpException
     /**
      * Additional error data.
      */
-    protected array|null $data = null;
+    protected ?array $data = null;
 
     /**
      * Attached headers.
@@ -38,7 +38,7 @@ abstract class HttpException extends BaseHttpException
     /**
      * Construct the exception class.
      */
-    public function __construct(string|null $message = null, array|null $headers = null)
+    public function __construct(?string $message = null, ?array $headers = null)
     {
         parent::__construct($this->status, $message ?? $this->message, null, $headers ?? $this->headers);
     }
@@ -62,7 +62,7 @@ abstract class HttpException extends BaseHttpException
     /**
      * Retrieve the error message.
      */
-    public function message(): string|null
+    public function message(): ?string
     {
         return $this->message ?: null;
     }
@@ -70,7 +70,7 @@ abstract class HttpException extends BaseHttpException
     /**
      * Retrieve additional error data.
      */
-    public function data(): array|null
+    public function data(): ?array
     {
         return $this->data;
     }
@@ -78,7 +78,7 @@ abstract class HttpException extends BaseHttpException
     /**
      * Retrieve attached headers.
      */
-    public function headers(): array|null
+    public function headers(): ?array
     {
         return $this->headers;
     }

@@ -2,15 +2,21 @@
 
 declare(strict_types=1);
 
-use Lightit\Application;
 use Illuminate\Foundation\Configuration\Middleware;
-use Illuminate\Foundation\Http\Middleware\{ConvertEmptyStringsToNull, PreventRequestsDuringMaintenance, TrimStrings};
-use Illuminate\Http\Middleware\{FrameGuard, HandleCors, TrustHosts, TrustProxies, ValidatePostSize};
+use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
+use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance;
+use Illuminate\Foundation\Http\Middleware\TrimStrings;
+use Illuminate\Http\Middleware\FrameGuard;
+use Illuminate\Http\Middleware\HandleCors;
+use Illuminate\Http\Middleware\TrustHosts;
+use Illuminate\Http\Middleware\TrustProxies;
+use Illuminate\Http\Middleware\ValidatePostSize;
+use Lightit\Application;
 use Lightit\Security\App\Middlewares\SecurityHeaders;
 use Lightit\Shared\App\Exceptions\ExceptionHandler;
 use Lightit\Shared\App\Http\Middleware\ForceJsonResponse;
 
-$exceptionManager = new ExceptionHandler();
+$exceptionManager = new ExceptionHandler;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(

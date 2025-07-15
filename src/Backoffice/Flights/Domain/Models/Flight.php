@@ -12,17 +12,19 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
 class Flight extends Model
 {
     protected $table = 'flights';
+
     protected $guarded = ['id'];
 
     /**
-     * @return BelongsTo<Airline,$this>
+     * @return BelongsTo<Airline, $this>
      */
-    public function airline(): BelongsTo{
+    public function airline(): BelongsTo
+    {
         return $this->belongsTo(Airline::class);
     }
 
     /**
-     * @return BelongsTo<City,$this>
+     * @return BelongsTo<City, $this>
      */
     public function originCity(): BelongsTo
     {
@@ -30,12 +32,10 @@ class Flight extends Model
     }
 
     /**
-     * @return BelongsTo<City,$this>
+     * @return BelongsTo<City, $this>
      */
     public function destinationCity(): BelongsTo
     {
         return $this->belongsTo(City::class, 'destination_id');
     }
-
-
 }

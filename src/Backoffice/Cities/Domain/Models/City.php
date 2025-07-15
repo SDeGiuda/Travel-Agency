@@ -11,10 +11,11 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
 class City extends Model
 {
     protected $table = 'cities';
+
     protected $guarded = ['id'];
 
     /**
-     * @return HasMany<Flight,$this>
+     * @return HasMany<Flight, $this>
      */
     public function originFlights(): HasMany
     {
@@ -22,11 +23,10 @@ class City extends Model
     }
 
     /**
-     * @return HasMany<Flight,$this>
+     * @return HasMany<Flight, $this>
      */
     public function destinationFlights(): HasMany
     {
         return $this->hasMany(Flight::class, 'destination_city_id');
     }
-
 }
