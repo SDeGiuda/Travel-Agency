@@ -26,7 +26,7 @@ class ValidationFailedException extends HttpException
     /**
      * Retrieve the error data.
      */
-    public function data(): ?array
+    public function data(): array|null
     {
         return ['fields' => $this->validator->getMessageBag()->toArray()];
     }

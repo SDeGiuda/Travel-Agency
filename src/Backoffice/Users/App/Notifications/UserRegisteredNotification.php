@@ -15,7 +15,9 @@ class UserRegisteredNotification extends Notification implements ShouldBeEncrypt
 {
     use Queueable;
 
-    public function __construct() {}
+    public function __construct()
+    {
+    }
 
     /**
      * @return array<int, string>

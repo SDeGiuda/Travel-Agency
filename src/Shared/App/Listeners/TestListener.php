@@ -11,5 +11,7 @@ class TestListener
     /**
      * Handle the event.
      */
-    public function handle(TestEvent $event): void {}
+    public function handle(TestEvent $event): void
+    {
+    }
 }

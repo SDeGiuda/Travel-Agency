@@ -97,7 +97,7 @@ class ExceptionHandler
     }
 
     /**
-     * @param  array<class-string<Exception>, callable|class-string<Exception>>  $convert
+     * @param array<class-string<Exception>, callable|class-string<Exception>> $convert
      *
      * @throws Exception
      */
@@ -110,7 +110,7 @@ class ExceptionHandler
                 }
 
                 if (is_string($target) && is_subclass_of($target, Exception::class)) {
-                    throw new $target;
+                    throw new $target();
                 }
 
                 throw new InvalidActionException('Invalid target provided for exception conversion.');

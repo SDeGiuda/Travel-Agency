@@ -40,7 +40,7 @@ dataset(name: 'validation-rules', dataset: [
 
     'email is required' => ['email_address', ''],
     'email be valid' => ['email_address', 'esthernjerigmail.com'],
-    'email not too long' => ['email_address', fn (): string => getLongName().'@gmail.com'],
+    'email not too long' => ['email_address', fn (): string => getLongName() . '@gmail.com'],
     'email be unique' => ['email_address', fn (): string => getATakenEmail()],
 
     'password is required' => ['password', ''],
