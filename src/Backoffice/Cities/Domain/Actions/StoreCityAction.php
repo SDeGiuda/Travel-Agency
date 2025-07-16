@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace Lightit\Backoffice\Cities\Domain\Actions;
 
-use Lightit\Backoffice\Cities\Domain\DataTransferObjects\CityDto;
+
 use Lightit\Backoffice\Cities\Domain\Models\City;
 
 class StoreCityAction
 {
-    public function execute(CityDTO $cityDTO): City
+    /**
+     * @param array<string,mixed> $data
+     * @return City
+     */
+    public function execute(array $data): City
     {
-        return City::create($cityDTO->toArray());
+        return City::create($data);
     }
 }

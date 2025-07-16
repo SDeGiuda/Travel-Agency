@@ -6,7 +6,6 @@ namespace Lightit\Backoffice\Cities\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Lightit\Backoffice\Cities\Domain\DataTransferObjects\CityDto;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
 /**
@@ -49,10 +48,6 @@ class City extends Model
         return $this->hasMany(Flight::class, 'destination_city_id');
     }
 
-    public function updateFromDto(CityDto $dto): City
-    {
-        $this->update($dto->toArray());
 
-        return $this;
-    }
+
 }

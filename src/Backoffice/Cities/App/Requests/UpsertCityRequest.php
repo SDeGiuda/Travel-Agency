@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Cities\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Lightit\Backoffice\Cities\Domain\DataTransferObjects\CityDto;
+
 
 class UpsertCityRequest extends FormRequest
 {
@@ -16,10 +16,5 @@ class UpsertCityRequest extends FormRequest
         ];
     }
 
-    public function toDto(): CityDto
-    {
-        return new CityDto(
-            name: $this->string('name')->toString()
-        );
-    }
+
 }

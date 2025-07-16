@@ -13,10 +13,10 @@ class StoreCityController
 {
     public function __invoke(StoreCityAction $storeCityAction, UpsertCityRequest $storeCityRequest): JsonResponse
     {
-        $cityDto = $storeCityAction->execute($storeCityRequest->toDto());
+        $city = $storeCityAction->execute($storeCityRequest->validated());
 
         return response()->json([
-            'data' => new CityResource($cityDto),
+            'data' => new CityResource($city),
         ], JsonResponse::HTTP_CREATED);
     }
 }
