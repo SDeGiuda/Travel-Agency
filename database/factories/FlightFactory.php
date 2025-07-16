@@ -14,15 +14,16 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
 class FlightFactory extends Factory
 {
     protected $model = Flight::class;
+
     public function definition(): array
     {
         $departureTime = $this->faker->dateTimeBetween('now', '+2 months');
         return [
-            'origin_id'=> City::inRandomOrder()->value('id'),
-            'destination_id'=> City::inRandomOrder()->value('id'),
-            'airline_id'=> City::inRandomOrder()->value('id'),
-            'departure_time' => $departureTime,
-            'arrival_time' => $this->faker->dateTimeBetween('$departure_time','+2 days')
+            'origin_id' => CityFactory::new(),
+            'destination_id' => CityFactory::new(),
+            'airline_id' => AirlineFactory::new(),
+            'departure_at' => $departureTime,
+            'arrival_at' => $this->faker->dateTimeBetween('$departure_time', '+2 days')
             //
         ];
     }

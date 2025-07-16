@@ -14,9 +14,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('origin_id')->constrained('cities');
             $table->foreignId('destination_id')->constrained('cities');
-            $table->foreignId('airline')->constrained('airlines');
-            $table->dateTime('departure_time');
-            $table->dateTime('arrival_time');
+            $table->foreignId('airline_id')->constrained('airlines');
+            $table->dateTime('departure_at');
+            $table->dateTime('arrival_at');
         });
     }
 

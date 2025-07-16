@@ -28,7 +28,7 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
  */
 class Airline extends Model
 {
-    protected $table = 'airlines';
+
 
     protected $guarded = ['id'];
 

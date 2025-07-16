@@ -16,7 +16,7 @@ use Lightit\Security\App\Middlewares\SecurityHeaders;
 use Lightit\Shared\App\Exceptions\ExceptionHandler;
 use Lightit\Shared\App\Http\Middleware\ForceJsonResponse;
 
-$exceptionManager = new ExceptionHandler;
+$exceptionManager = new ExceptionHandler();
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
