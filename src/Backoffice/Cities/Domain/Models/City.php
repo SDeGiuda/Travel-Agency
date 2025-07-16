@@ -6,11 +6,12 @@ namespace Lightit\Backoffice\Cities\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Lightit\Backoffice\Cities\Domain\DataTransferObjects\CityDto;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
 /**
- * @property int                          $id
- * @property string                       $name
+ * @property int $id
+ * @property string $name
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Flight> $destinationFlights
@@ -30,8 +31,6 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
  */
 class City extends Model
 {
-
-
     protected $guarded = ['id'];
 
     /**
@@ -48,5 +47,12 @@ class City extends Model
     public function destinationFlights(): HasMany
     {
         return $this->hasMany(Flight::class, 'destination_city_id');
+    }
+
+    public function updateFromDto(CityDto $dto): City
+    {
+        $this->update($dto->toArray());
+
+        return $this;
     }
 }
