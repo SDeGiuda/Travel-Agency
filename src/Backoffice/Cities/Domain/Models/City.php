@@ -10,8 +10,8 @@ use Lightit\Backoffice\Cities\Domain\DataTransferObjects\CityDto;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
 /**
- * @property int $id
- * @property string $name
+ * @property int                          $id
+ * @property string                       $name
  * @property \Carbon\CarbonImmutable|null $created_at
  * @property \Carbon\CarbonImmutable|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Flight> $destinationFlights

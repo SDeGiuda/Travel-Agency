@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lightit\Backoffice\Cities\Domain\Actions;
 
 use Lightit\Backoffice\Cities\Domain\DataTransferObjects\CityDto;
@@ -10,6 +12,5 @@ class StoreCityAction
     public function execute(CityDTO $cityDTO): City
     {
         return City::create($cityDTO->toArray());
-
     }
 }

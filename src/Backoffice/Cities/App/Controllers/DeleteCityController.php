@@ -13,11 +13,7 @@ class DeleteCityController
     public function __invoke(City $city, DeleteCityAction $deleteCityAction): JsonResponse
     {
         $response = $deleteCityAction->execute($city);
-        if ($response) {
-            $status = JsonResponse::HTTP_OK;
-        } else {
-            $status = JsonResponse::HTTP_BAD_REQUEST;
-        }
+        $status = $response ? JsonResponse::HTTP_OK : JsonResponse::HTTP_BAD_REQUEST;
 
         return response()->json([], $status);
     }
