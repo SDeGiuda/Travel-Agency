@@ -12,7 +12,8 @@ class DeleteCityController
 {
     public function __invoke(City $city, DeleteCityAction $deleteCityAction): JsonResponse
     {
-        $response = $deleteCityAction->execute($city);
+        $deleteCityAction->execute($city);
+
         return response()->json([]);
     }
 }
