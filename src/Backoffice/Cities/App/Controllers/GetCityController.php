@@ -12,8 +12,6 @@ class GetCityController
 {
     public function __invoke(City $city): JsonResponse
     {
-        return response()->json([
-            'data' => new CityResource($city),
-        ], JsonResponse::HTTP_OK);
+        return CityResource::make($city)->response();
     }
 }
