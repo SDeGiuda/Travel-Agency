@@ -12,7 +12,7 @@ class ListAirlineController
 {
     public function __invoke(ListAirlineAction $listAirlineAction, FilterAirlinesRequest $filters): JsonResponse
     {
-        $listAirlineAction->execute($filters->validated());
+        $listAirlineAction->execute($filters->toDto());
 
         return response()->json($listAirlineAction);
     }
