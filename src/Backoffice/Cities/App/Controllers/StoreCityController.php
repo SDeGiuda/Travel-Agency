@@ -13,7 +13,7 @@ class StoreCityController
 {
     public function __invoke(StoreCityAction $storeCityAction, UpsertCityRequest $storeCityRequest): JsonResponse
     {
-        $city = $storeCityAction->execute($storeCityRequest->validated());
+        $city = $storeCityAction->execute($storeCityRequest->getName());
 
         return response()->json([
             'data' => new CityResource($city),

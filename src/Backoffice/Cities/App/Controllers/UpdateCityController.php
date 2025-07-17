@@ -14,7 +14,7 @@ class UpdateCityController
 {
     public function __invoke(UpsertCityRequest $request, UpdateCityAction $updateCityAction, City $city): JsonResponse
     {
-        $updatedCity = $updateCityAction->execute($city, $request->validated());
+        $updatedCity = $updateCityAction->execute($city, $request->getName());
 
         return response()->json([
             'data' => new CityResource($updatedCity),

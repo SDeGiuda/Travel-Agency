@@ -14,4 +14,9 @@ class UpsertCityRequest extends FormRequest
             'name' => ['required', 'string', 'max:100'],
         ];
     }
+
+    public function getName(): string
+    {
+        return $this->string('name')->toString();
+    }
 }

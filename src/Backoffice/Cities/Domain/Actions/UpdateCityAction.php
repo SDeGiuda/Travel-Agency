@@ -9,11 +9,11 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
 class UpdateCityAction
 {
     /**
-     * @param array<string, mixed> $data
+     * @param array<string, mixed> $name
      */
-    public function execute(City $city, array $data): City
+    public function execute(City $city, string $name): City
     {
-        $city->update($data);
+        $city->update(['name'=>$name]);
 
         return $city;
     }
