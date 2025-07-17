@@ -1,8 +1,8 @@
 <?php
 
-namespace Lightit\Backoffice\Airlines\Domain\DataTransferObjects;
+declare(strict_types=1);
 
-use Lightit\Backoffice\Airlines\Domain\Enums\SortDirections;
+namespace Lightit\Backoffice\Airlines\Domain\DataTransferObjects;
 
 class FiltersDTO
 {
@@ -11,17 +11,17 @@ class FiltersDTO
         public readonly int $maxFlightCount,
         public readonly int $originId,
         public readonly int $destinationId,
-        public readonly int $orderByName,
-    ) {
-    }
+        public readonly string $orderByName,
+    ) {}
 
-    public function toArray(): array{
+    public function toArray(): array
+    {
         return [
-            'minFlightCount'=>$this->minFlightCount,
-            'maxFlightCount'=>$this->maxFlightCount,
-            'originId'=>$this->originId,
-            'destinationId'=>$this->destinationId,
-            'orderByName'=>$this->orderByName,
+            'minFlightCount' => $this->minFlightCount,
+            'maxFlightCount' => $this->maxFlightCount,
+            'originId' => $this->originId,
+            'destinationId' => $this->destinationId,
+            'orderByName' => $this->orderByName,
         ];
     }
 }

@@ -9,10 +9,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
 /**
- * @property int    $id
+ * @property int $id
  * @property string $name
  * @property string $description
- * @property int    $Number               of flights
+ * @property int $Number of flights
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Flight> $flights
  * @property-read int|null $flights_count
  *
