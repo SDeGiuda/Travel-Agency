@@ -12,7 +12,8 @@ class FiltersDTO
         public readonly int $originId,
         public readonly int $destinationId,
         public readonly string $orderByName,
-    ) {}
+    ) {
+    }
 
     public function toArray(): array
     {
