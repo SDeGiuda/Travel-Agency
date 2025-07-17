@@ -8,9 +8,6 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
 
 class UpdateCityAction
 {
-    /**
-     * @param array<string, mixed> $name
-     */
     public function execute(City $city, string $name): City
     {
         $city->update(['name'=>$name]);
