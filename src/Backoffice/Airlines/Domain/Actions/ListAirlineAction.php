@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Lightit\Backoffice\Airlines\Domain\DataTransferObjects\FiltersDTO;
 use Lightit\Backoffice\Airlines\Domain\Models\Airline;
 
-use function PHPUnit\Framework\isNull;
-
 class ListAirlineAction
 {
     /**
@@ -21,13 +19,13 @@ class ListAirlineAction
         /** @var Builder<Airline> $query */
         $query = Airline::query()->withCount('flights');
 
-        if (!is_null($filters->minFlightCount)) {
-            $query->where('flights_count', '>=', $filters['min_flight_count']);
+        if (! is_null($filters->minFlightCount)) {
+            $query->where('flights_count', '>=', $filters->minFlightCount);
         }
-        if (!is_null($filters->maxFlightCount)) {
-            $query->where('flights_count', '<=', $filters['max_flight_count']);
+        if (! is_null($filters->maxFlightCount)) {
+            $query->where('flights_count', '<=', $filters->maxFlightCount);
         }
-        if (!is_null($filters->destinationId)) {
+        if (! is_null($filters->destinationId)) {
             $query->whereExists(function ($subQuery) use ($filters): void {
                 /** @var Builder<Airline> $subQuery */
                 $subQuery->select('flight_id')
@@ -36,7 +34,7 @@ class ListAirlineAction
                     ->whereIn('destination_id', $filters->destinationId);
             });
         }
-        if (!is_null($filters->originId)) {
+        if (! is_null($filters->originId)) {
             $query->whereExists(function ($subQuery) use ($filters): void {
                 /** @var Builder<Airline> $subQuery */
                 $subQuery->select('flight_id')
@@ -45,8 +43,7 @@ class ListAirlineAction
                     ->whereIn('origin_id', $filters->originId);
             });
         }
-        if (!is_null($filters->orderByName)) {
-
+        if (! is_null($filters->orderByName)) {
             $query->orderBy('name', $filters->orderByName);
         } else {
             $query->orderBy('id');
