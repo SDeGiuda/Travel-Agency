@@ -12,6 +12,7 @@ use Lightit\Backoffice\Users\App\Controllers\UpdateUserController;
 use Lightit\Backoffice\Users\App\Resources\UserResource;
 use Lightit\Backoffice\Users\Domain\Models\User;
 use Tests\RequestFactories\StoreUserRequestFactory;
+
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\putJson;
 
@@ -37,8 +38,7 @@ describe('users', function (): void {
         $response
             ->assertOk()
             ->assertJson(
-                fn (AssertableJson $json): AssertableJson =>
-                $json->has(
+                fn (AssertableJson $json): AssertableJson => $json->has(
                     'data',
                     fn (AssertableJson $json): AssertableJson => $json->whereAll(
                         UserResource::make($user)->resolve()

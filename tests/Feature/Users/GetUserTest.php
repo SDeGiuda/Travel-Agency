@@ -8,6 +8,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Testing\Fluent\AssertableJson;
 use Lightit\Backoffice\Users\App\Resources\UserResource;
+
 use function Pest\Laravel\getJson;
 
 describe('users', function (): void {
@@ -18,8 +19,7 @@ describe('users', function (): void {
         getJson("api/users/$existingUser->id")
             ->assertStatus(JsonResponse::HTTP_OK)
             ->assertJson(
-                fn (AssertableJson $json): AssertableJson =>
-                $json->has(
+                fn (AssertableJson $json): AssertableJson => $json->has(
                     'data',
                     fn (AssertableJson $json): AssertableJson => $json->whereAll(
                         UserResource::make($existingUser)->resolve()

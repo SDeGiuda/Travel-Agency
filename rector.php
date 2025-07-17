@@ -12,9 +12,9 @@ return static function (RectorConfig $rectorConfig): void {
     WorksomeRectorConfig::setup($rectorConfig);
 
     $rectorConfig->paths([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
-        __DIR__ . '/routes',
+        __DIR__.'/src',
+        __DIR__.'/tests',
+        __DIR__.'/routes',
     ]);
 
     // Define extra rule sets to be applied
