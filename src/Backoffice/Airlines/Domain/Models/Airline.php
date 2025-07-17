@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Airlines\Domain\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Lightit\Backoffice\Cities\Domain\Models\City;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
+use phpDocumentor\Reflection\Types\This;
 
 /**
  * @property int    $id
@@ -35,5 +38,13 @@ class Airline extends Model
     public function flights(): HasMany
     {
         return $this->hasMany(Flight::class);
+    }
+
+    /**
+     * @return BelongsToMany<City,$this>
+     */
+    public function cities(): BelongsToMany
+    {
+        return $this->belongsToMany(City::class);
     }
 }
