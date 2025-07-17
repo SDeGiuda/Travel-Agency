@@ -30,8 +30,6 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
  */
 class City extends Model
 {
-
-
     protected $guarded = ['id'];
 
     /**

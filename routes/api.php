@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Support\Facades\Route;
+use Lightit\Backoffice\Cities\App\Controllers\DeleteCityController;
+use Lightit\Backoffice\Cities\App\Controllers\GetCityController;
+use Lightit\Backoffice\Cities\App\Controllers\ListCityController;
+use Lightit\Backoffice\Cities\App\Controllers\StoreCityController;
+use Lightit\Backoffice\Cities\App\Controllers\UpdateCityController;
 use Lightit\Backoffice\Users\App\Controllers\DeleteUserController;
 use Lightit\Backoffice\Users\App\Controllers\GetUserController;
 use Lightit\Backoffice\Users\App\Controllers\ListUserController;
@@ -46,3 +51,11 @@ Route::prefix('users')
         Route::delete('/{user}', DeleteUserController::class)
             ->whereNumber('user');
     });
+
+Route::prefix('cities')->name('cities.')->group(static function (): void {
+    Route::get('/', ListCityController::class)->name('index');
+    Route::post('/', StoreCityController::class)->name('store');
+    Route::put('/{city}', UpdateCityController::class)->name('update');
+    Route::delete('/{city}', DeleteCityController::class)->name('destroy');
+    Route::get('/{city}', GetCityController::class)->name('show');
+});
