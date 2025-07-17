@@ -4,51 +4,28 @@ declare(strict_types=1);
 
 namespace Lightit\Backoffice\Airlines\Domain\Actions;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Lightit\Backoffice\Airlines\Domain\DataTransferObjects\FiltersDTO;
 use Lightit\Backoffice\Airlines\Domain\Models\Airline;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\Enums\FilterOperator;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class ListAirlineAction
 {
-    /**
-     * @return Collection<int, Airline>
-     */
-    public function execute(FiltersDTO $filters): Collection
+    public function execute(): LengthAwarePaginator
     {
-        /** @var Builder<Airline> $query */
-        $query = Airline::query()->withCount('flights');
+        return QueryBuilder::for(Airline::class)
+            ->allowedIncludes('flights')
+            ->allowedFilters([
+                AllowedFilter::operator('flights_count', FilterOperator::GREATER_THAN),
+                AllowedFilter::operator('flights_count', FilterOperator::LESS_THAN),
+                AllowedFilter::exact('flights.origin_id'),
+                AllowedFilter::exact('flights.destination_id'),
 
-        if (! is_null($filters->minFlightCount)) {
-            $query->where('flights_count', '>=', $filters->minFlightCount);
-        }
-        if (! is_null($filters->maxFlightCount)) {
-            $query->where('flights_count', '<=', $filters->maxFlightCount);
-        }
-        if (! is_null($filters->destinationId)) {
-            $query->whereExists(function ($subQuery) use ($filters): void {
-                /** @var Builder<Airline> $subQuery */
-                $subQuery->select('flight_id')
-                    ->from('flights')
-                    ->whereColumn('airline_id', 'flights.airline_id')
-                    ->whereIn('destination_id', $filters->destinationId);
-            });
-        }
-        if (! is_null($filters->originId)) {
-            $query->whereExists(function ($subQuery) use ($filters): void {
-                /** @var Builder<Airline> $subQuery */
-                $subQuery->select('flight_id')
-                    ->from('flights')
-                    ->whereColumn('airline_id', 'flights.airline_id')
-                    ->whereIn('origin_id', $filters->originId);
-            });
-        }
-        if (! is_null($filters->orderByName)) {
-            $query->orderBy('name', $filters->orderByName);
-        } else {
-            $query->orderBy('id');
-        }
-
-        return $query->get();
+            ])
+            ->allowedSorts(['id', 'name'])
+            ->withCount('flights')
+            ->paginate();
     }
 }

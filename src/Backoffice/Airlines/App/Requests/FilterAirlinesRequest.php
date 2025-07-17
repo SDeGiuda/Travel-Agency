@@ -22,7 +22,7 @@ class FilterAirlinesRequest extends FormRequest
         ];
     }
 
-    public function toDto(): \Lightit\Backoffice\Airlines\Domain\DataTransferObjects\FiltersDTO
+    public function toDto(): FiltersDTO
     {
         return new FiltersDTO(
             minFlightCount: $this->integer('min_flight_count'),
