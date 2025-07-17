@@ -7,11 +7,11 @@ namespace Lightit\Backoffice\Airlines\Domain\DataTransferObjects;
 class FiltersDTO
 {
     public function __construct(
-        public readonly int $minFlightCount,
-        public readonly int $maxFlightCount,
-        public readonly int $originId,
-        public readonly int $destinationId,
-        public readonly string $orderByName,
+        public readonly ?int $minFlightCount,
+        public readonly ?int $maxFlightCount,
+        public readonly ?int $originId,
+        public readonly ?int $destinationId,
+        public readonly ?string $orderByName,
     ) {
     }
 
