@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Support\Facades\Route;
+use Lightit\Backoffice\Airlines\App\Controllers\CreateAirlineController;
+use Lightit\Backoffice\Airlines\App\Controllers\DeleteAirlineController;
+use Lightit\Backoffice\Airlines\App\Controllers\GetAirlineController;
+use Lightit\Backoffice\Airlines\App\Controllers\ListAirlineController;
+use Lightit\Backoffice\Airlines\App\Controllers\UpdateAirlineController;
 use Lightit\Backoffice\Cities\App\Controllers\DeleteCityController;
 use Lightit\Backoffice\Cities\App\Controllers\GetCityController;
 use Lightit\Backoffice\Cities\App\Controllers\ListCityController;
@@ -51,6 +56,15 @@ Route::prefix('users')
         Route::delete('/{user}', DeleteUserController::class)
             ->whereNumber('user');
     });
+
+Route::prefix('airlines')->name('airlines.')->group(static function (): void {
+    Route::get('/', ListAirlineController::class)->name('index');
+    Route::get('/{airline}', GetAirlineController::class)->name('show');
+    Route::post('/', CreateAirlineController::class)->name('store');
+    Route::put('/{airline}', UpdateAirlineController::class)->name('update');
+    Route::delete('/{airline}', DeleteAirlineController::class)->name('destroy');
+});
+
 
 Route::prefix('cities')->name('cities.')->group(static function (): void {
     Route::get('/', ListCityController::class)->name('index');
