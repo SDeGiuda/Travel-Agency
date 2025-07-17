@@ -11,7 +11,7 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
 /**
  * @property int    $id
  * @property string $name
- * @property string $business_description
+ * @property string $description
  * @property int    $Number               of flights
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Flight> $flights
  * @property-read int|null $flights_count
@@ -24,12 +24,12 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline whereNumberOfFlights($value)
  *
+ * @property int $Number of flights
+ *
  * @mixin \Eloquent
  */
 class Airline extends Model
 {
-
-
     protected $guarded = ['id'];
 
     /**
