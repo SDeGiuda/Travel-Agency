@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lightit\Backoffice\Airlines\App\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -8,10 +10,10 @@ use Lightit\Backoffice\Airlines\Domain\Actions\ListAirlineAction;
 
 class ListAirlineController
 {
-
-    public function __invoke(ListAirlineAction $listAirlineAction,FilterAirlinesRequest $filters):JsonResponse
+    public function __invoke(ListAirlineAction $listAirlineAction, FilterAirlinesRequest $filters): JsonResponse
     {
         $listAirlineAction->execute($filters->validated());
+
         return response()->json($listAirlineAction);
     }
 }

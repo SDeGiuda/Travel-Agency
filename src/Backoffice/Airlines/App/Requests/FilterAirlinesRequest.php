@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lightit\Backoffice\Airlines\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -9,18 +11,18 @@ use Lightit\Backoffice\Airlines\Domain\Enums\SortDirections;
 
 class FilterAirlinesRequest extends FormRequest
 {
-    public function rules():array
+    public function rules(): array
     {
-        return[
-            'min_flight_count'=>['integer','min:0'],
-            'max_flight_count'=>['integer','min:0'],
-            'origin_id'=>['integer','exists:airlines,id'],
-            'destination_id'=>['integer',Rule::exists('cities','id')],
-            'order_by_name'=>['string',Rule::enum(SortDirections::class)],
+        return [
+            'min_flight_count' => ['integer', 'min:0'],
+            'max_flight_count' => ['integer', 'min:0'],
+            'origin_id' => ['integer', 'exists:airlines,id'],
+            'destination_id' => ['integer', Rule::exists('cities', 'id')],
+            'order_by_name' => ['string', Rule::enum(SortDirections::class)],
         ];
     }
 
-    public function toDto()
+    public function toDto(): \Lightit\Backoffice\Airlines\Domain\DataTransferObjects\FiltersDTO
     {
         return new FiltersDTO(
             minFlightCount: $this->integer('min_flight_count'),
@@ -30,7 +32,4 @@ class FilterAirlinesRequest extends FormRequest
             orderByName: $this->string('order_by_name')->toString(),
         );
     }
-
-
-
 }
