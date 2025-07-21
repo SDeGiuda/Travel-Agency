@@ -8,7 +8,7 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
 class StoreFlightAction
 {
-    public function execute(FlightDTO $flightDTO):Flight
+    public function execute(FlightDTO $flightDTO): Flight
     {
         return Flight::create($flightDTO->toArray());
     }

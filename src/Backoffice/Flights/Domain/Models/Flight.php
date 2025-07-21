@@ -10,12 +10,12 @@ use Lightit\Backoffice\Airlines\Domain\Models\Airline;
 use Lightit\Backoffice\Cities\Domain\Models\City;
 
 /**
- * @property int          $id
- * @property int          $origin_id
- * @property int          $destination_id
- * @property Airline|null $airline
- * @property string       $departure_time
- * @property string       $arrival_time
+ * @property int     $id
+ * @property int     $origin_id
+ * @property int     $destination_id
+ * @property Airline $airline
+ * @property string  $departure_time
+ * @property string  $arrival_time
  * @property-read City $destinationCity
  * @property-read City $originCity
  *
@@ -28,6 +28,18 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereDestinationId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereOriginId($value)
+ *
+ * @property int                          $airline_id
+ * @property string                       $departure_at
+ * @property string                       $arrival_at
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereAirlineId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereArrivalAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereDepartureAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereUpdatedAt($value)
  *
  * @mixin \Eloquent
  */
