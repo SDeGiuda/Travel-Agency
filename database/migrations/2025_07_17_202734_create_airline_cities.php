@@ -14,6 +14,7 @@ return new class extends Migration
             $table->foreignId('airline_id')->constrained('airlines');
             $table->foreignId('city_id')->constrained('cities');
             $table->primary(['airline_id', 'city_id']);
+            $table->timestamps();
         });
     }
 

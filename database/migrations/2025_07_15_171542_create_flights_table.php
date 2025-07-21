@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('airline_id')->constrained('airlines');
             $table->dateTime('departure_at');
             $table->dateTime('arrival_at');
+            $table->timestamps();
         });
     }
 

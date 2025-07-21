@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Lightit\Backoffice\Cities\Domain\Models\City;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
-use phpDocumentor\Reflection\Types\This;
 
 /**
  * @property int    $id
@@ -17,7 +16,6 @@ use phpDocumentor\Reflection\Types\This;
  * @property string $description
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Flight> $flights
  * @property-read int|null $flights_count
- *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline query()
