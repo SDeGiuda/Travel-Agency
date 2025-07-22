@@ -8,7 +8,7 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
 class DeleteFlightAction
 {
-    public function execute(Flight $flight): ?bool
+    public function execute(Flight $flight): bool|null
     {
         return $flight->delete();
     }
