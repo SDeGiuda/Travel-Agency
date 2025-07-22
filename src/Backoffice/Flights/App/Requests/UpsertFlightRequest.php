@@ -15,7 +15,7 @@ class UpsertFlightRequest extends FormRequest
     {
         return [
             'origin_id' => ['required', Rule::exists('cities', 'id')],
-            'destination_id' => ['required', Rule::exists('cities', 'id'),'different:origin_id'],
+            'destination_id' => ['required', Rule::exists('cities', 'id'), 'different:origin_id'],
             'airline_id' => ['required', Rule::exists('airlines', 'id')],
             'departure_at' => ['date', 'required'],
             'arrival_at' => ['date', 'required', 'after:departure_at'],
