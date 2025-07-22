@@ -23,11 +23,11 @@ class FlightDTO
     public function toArray(): array
     {
         return [
-            'originId' => $this->originId,
-            'destinationId' => $this->destinationId,
-            'airlineId' => $this->airlineId,
-            'departure' => $this->departure,
-            'arrival' => $this->arrival,
+            'origin_id' => $this->originId,
+            'destination_id' => $this->destinationId,
+            'airline_id' => $this->airlineId,
+            'departure_at' => $this->departure,
+            'arrival_at' => $this->arrival,
 
         ];
     }
