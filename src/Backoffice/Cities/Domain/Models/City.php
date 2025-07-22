@@ -19,6 +19,7 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
  * @property-read int|null $destination_flights_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Flight> $originFlights
  * @property-read int|null $origin_flights_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|City newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|City newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|City query()
@@ -50,7 +51,7 @@ class City extends Model
     }
 
     /**
-     * @return BelongsToMany<Airline,$this>
+     * @return BelongsToMany<Airline, $this>
      */
     public function airlines(): BelongsToMany
     {

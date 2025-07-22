@@ -11,7 +11,6 @@ class ListAirlineController
 {
     public function __invoke(ListAirlineAction $listAirlineAction): JsonResponse
     {
-
-        return response()->json( $listAirlineAction->execute());
+        return response()->json($listAirlineAction->execute());
     }
 }

@@ -11,11 +11,12 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
 /**
- * @property int    $id
+ * @property int $id
  * @property string $name
  * @property string $description
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Flight> $flights
  * @property-read int|null $flights_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline query()
@@ -39,7 +40,7 @@ class Airline extends Model
     }
 
     /**
-     * @return BelongsToMany<City,$this>
+     * @return BelongsToMany<City, $this>
      */
     public function cities(): BelongsToMany
     {

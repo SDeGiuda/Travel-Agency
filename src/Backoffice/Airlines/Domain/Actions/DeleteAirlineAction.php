@@ -8,7 +8,7 @@ use Lightit\Backoffice\Airlines\Domain\Models\Airline;
 
 class DeleteAirlineAction
 {
-    public function execute(Airline $airline): bool|null
+    public function execute(Airline $airline): ?bool
     {
         return $airline->delete();
     }

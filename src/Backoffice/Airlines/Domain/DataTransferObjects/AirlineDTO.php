@@ -9,8 +9,7 @@ class AirlineDTO
     public function __construct(
         public readonly string $name,
         public readonly string $description,
-    ) {
-    }
+    ) {}
 
     /**
      * @return array<string, mixed>
