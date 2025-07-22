@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lightit\Backoffice\Airlines\Domain\Actions;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Lightit\Backoffice\Airlines\Domain\Models\Airline;
@@ -18,17 +19,26 @@ class ListAirlineAction
      */
     public function execute(): LengthAwarePaginator
     {
-        return QueryBuilder::for(Airline::class)
+        /** @var Builder<Model> $initial_query */
+        $initial_query = Airline::query()
+                ->select('airlines.*')
+                ->selectRaw('COUNT(flights.id)')
+                ->leftJoin('flights', 'flights.airline_id', '=', 'airlines.id')
+                ->groupBy('airlines.id');
+
+        $query= QueryBuilder::for($initial_query)
             ->allowedIncludes('flights')
             ->allowedFilters([
-                AllowedFilter::operator('flights_count', FilterOperator::GREATER_THAN),
-                AllowedFilter::operator('flights_count', FilterOperator::LESS_THAN),
                 AllowedFilter::exact('flights.origin_id'),
                 AllowedFilter::exact('flights.destination_id'),
+                AllowedFilter::callback('flights_min', function (Builder $query, int $value) {
+                    $query->havingRaw('COUNT(flights.id) >= ?', [ $value]);}),
 
+                AllowedFilter::callback('flights_max', function (Builder $query, int $value) {
+                    $query->havingRaw('COUNT(flights.id) <= ?', [$value]);})
             ])
-            ->allowedSorts(['id', 'name'])
-            ->withCount('flights')
-            ->paginate();
+            ->allowedSorts(['id', 'name']);
+
+        return $query->paginate();
     }
 }
