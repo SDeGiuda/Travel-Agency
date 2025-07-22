@@ -66,10 +66,12 @@ Route::prefix('cities')->name('cities.')->group(static function (): void {
 });
 
 
-Route::prefix('flights')->name('flights.')->group(static function (): void {
-    Route::get('/', ListFlightController::class)->name('index');
-    Route::post('/', StoreFlightControlller::class)->name('store');
-    Route::put('/{flight}', UpdateFlightController::class)->name('update');
-    Route::delete('/{flight}', DeleteFlightController::class)->name('destroy');
-    Route::get('/{flight}', GetFlightController::class)->name('show');
+Route::prefix('flights')->group(static function (): void {
+    Route::get('/', ListFlightController::class);
+    Route::post('/', StoreFlightControlller::class);
+    Route::prefix('/{flight}')->group(static function (): void {
+        Route::put('/', UpdateFlightController::class);
+        Route::delete('/', DeleteFlightController::class);
+        Route::get('/', GetFlightController::class);
+    });
 });

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Lightit\Backoffice\Flights\App\Requests;
 
+use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use Lightit\Backoffice\Flights\Domain\DataTransferObjects\FlightDTO;
 
@@ -24,17 +24,17 @@ class UpsertFlightRequest extends FormRequest
 
     public function toDto(): FlightDTO
     {
-        /** @var Carbon $departure */
+        /** @var CarbonImmutable $departure */
         $departure = $this->date('departure_at');
-        /** @var Carbon $arrival */
+        /** @var CarbonImmutable $arrival */
         $arrival = $this->date('arrival_at');
 
         return new FlightDto(
             originId: $this->integer('origin_id'),
             destinationId: $this->integer('destination_id'),
             airlineId: $this->integer('airline_id'),
-            departure: $departure->toDateTime(),
-            arrival: $arrival->toDateTime()
+            departure: $departure,
+            arrival: $arrival,
         );
     }
 }

@@ -19,9 +19,8 @@ class ListFlightAction
      */
     public function execute(): Collection
     {
-        /** @var Builder<Model> $builder */
-        $builder = Flight::with(['originCity', 'destinationCity', 'airline']);
-        $query = QueryBuilder::for($builder)
+
+        $query = QueryBuilder::for(Flight::class)
             ->allowedFilters([
                 AllowedFilter::exact('origin_id'),
                 AllowedFilter::exact('destination_id'),
@@ -34,7 +33,8 @@ class ListFlightAction
             ->allowedSorts(
                 AllowedSort::field('departure_at'),
                 AllowedSort::field('arrival_at'),
-            );
+            )
+            ->with(['originCity', 'destinationCity', 'airline']);
 
         return $query->get();
     }
