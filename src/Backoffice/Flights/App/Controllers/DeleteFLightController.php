@@ -14,6 +14,6 @@ class DeleteFLightController
     {
         $deleteFlightAction->execute($flight);
 
-        return response()->json([], JsonResponse::HTTP_OK);
+        return response()->json([], JsonResponse::HTTP_NO_CONTENT);
     }
 }
