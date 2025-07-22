@@ -17,8 +17,9 @@ class FlightDTO
     ) {
     }
 
+
     /**
-     * @return array{originId: int, destinationId: int, airlineId: int, departure: \DateTime, arrival: \DateTime}
+     * @return array{origin_id: int, destination_id: int, airline_id: int, departure_at: \DateTime, arrival_at: \DateTime}
      */
     public function toArray(): array
     {
