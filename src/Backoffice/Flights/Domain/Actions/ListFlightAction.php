@@ -19,7 +19,6 @@ class ListFlightAction
      */
     public function execute(): Collection
     {
-
         $query = QueryBuilder::for(Flight::class)
             ->allowedFilters([
                 AllowedFilter::exact('origin_id'),
