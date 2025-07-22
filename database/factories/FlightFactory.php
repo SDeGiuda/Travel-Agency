@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Lightit\Backoffice\Cities\Domain\Models\City;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
 /**
@@ -23,8 +22,7 @@ class FlightFactory extends Factory
             'destination_id' => CityFactory::new(),
             'airline_id' => AirlineFactory::new(),
             'departure_at' => $departureTime,
-            'arrival_at' => $this->faker->dateTimeBetween('$departure_time', '+2 days')
-            //
+            'arrival_at' => $this->faker->dateTimeBetween($departureTime,(clone $departureTime)->modify('+2 days'))
         ];
     }
 }

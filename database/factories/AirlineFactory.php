@@ -12,7 +12,7 @@ use Lightit\Backoffice\Airlines\Domain\Models\Airline;
  */
 class AirlineFactory extends Factory
 {
-
+    protected $model = Airline::class;
     public function definition(): array
     {
         return [

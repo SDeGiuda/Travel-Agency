@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 use Illuminate\Container\Attributes\CurrentUser;
 use Illuminate\Support\Facades\Route;
+use Lightit\Backoffice\Airlines\App\Controllers\CreateAirlineController;
+use Lightit\Backoffice\Airlines\App\Controllers\DeleteAirlineController;
+use Lightit\Backoffice\Airlines\App\Controllers\GetAirlineController;
+use Lightit\Backoffice\Airlines\App\Controllers\ListAirlineController;
+use Lightit\Backoffice\Airlines\App\Controllers\UpdateAirlineController;
 use Lightit\Backoffice\Cities\App\Controllers\DeleteCityController;
 use Lightit\Backoffice\Cities\App\Controllers\GetCityController;
 use Lightit\Backoffice\Cities\App\Controllers\ListCityController;
@@ -52,10 +57,24 @@ Route::prefix('users')
             ->whereNumber('user');
     });
 
-Route::prefix('cities')->name('cities.')->group(static function (): void {
-    Route::get('/', ListCityController::class)->name('index');
-    Route::post('/', StoreCityController::class)->name('store');
-    Route::put('/{city}', UpdateCityController::class)->name('update');
-    Route::delete('/{city}', DeleteCityController::class)->name('destroy');
-    Route::get('/{city}', GetCityController::class)->name('show');
+Route::prefix('airlines')->name('airlines.')->group(static function (): void {
+    Route::get('/', ListAirlineController::class);
+    Route::post('/', CreateAirlineController::class);
+    Route::prefix('/{airline}')->group(static function (): void {
+        Route::get('/', GetAirlineController::class);
+        Route::put('/', UpdateAirlineController::class);
+        Route::delete('/', DeleteAirlineController::class);
+    });
 });
+
+Route::prefix('cities')->name('cities.')->group(static function (): void {
+    Route::get('/', ListCityController::class);
+    Route::post('/', StoreCityController::class);
+    Route::prefix('/{city}')->group(static function (): void {
+        Route::put('/', UpdateCityController::class);
+        Route::delete('/', DeleteCityController::class);
+        Route::get('/', GetCityController::class);
+    });
+});
+
+

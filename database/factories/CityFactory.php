@@ -12,6 +12,7 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
  */
 class CityFactory extends Factory
 {
+    protected $model = City::class;
     public function definition(): array
     {
         return [
