@@ -11,7 +11,7 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
 /**
- * @property int $id
+ * @property int    $id
  * @property string $name
  * @property string $description
  * @property-read \Illuminate\Database\Eloquent\Collection<int, Flight> $flights
