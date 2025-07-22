@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Lightit\Backoffice\Flights\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
