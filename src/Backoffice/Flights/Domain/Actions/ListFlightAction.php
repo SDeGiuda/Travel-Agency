@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Lightit\Backoffice\Flights\Domain\Actions;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
 use Spatie\QueryBuilder\AllowedFilter;
@@ -19,7 +19,9 @@ class ListFlightAction
      */
     public function execute(): Collection
     {
-        $query = QueryBuilder::for(Flight::class)
+        /** @var Builder<Model> $builder */
+        $builder = Flight::with(['originCity', 'destinationCity', 'airline']);
+        $query = QueryBuilder::for($builder)
             ->allowedFilters([
                 AllowedFilter::exact('origin_id'),
                 AllowedFilter::exact('destination_id'),
@@ -30,8 +32,8 @@ class ListFlightAction
                 ),
             ])
             ->allowedSorts(
-                AllowedSort::field('departure_date'),
-                AllowedSort::field('arrival_date'),
+                AllowedSort::field('departure_at'),
+                AllowedSort::field('arrival_at'),
             );
 
         return $query->get();

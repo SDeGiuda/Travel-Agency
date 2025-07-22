@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Lightit\Backoffice\Flights\Domain\DataTransferObjects;
 
 use DateTime;
@@ -13,8 +14,7 @@ class FlightDTO
         public readonly int $airlineId,
         public readonly DateTime $departure,
         public readonly DateTime $arrival,
-    ) {
-    }
+    ) {}
 
     /**
      * @return array{originId: int, destinationId: int, airlineId: int, departure: \DateTime, arrival: \DateTime}

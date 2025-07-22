@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Lightit\Backoffice\Flights\Domain\Actions;
 
 use Lightit\Backoffice\Flights\Domain\DataTransferObjects\FlightDTO;
