@@ -1,17 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 use Database\Factories\AirlineFactory;
 use Database\Factories\CityFactory;
 use Illuminate\Http\JsonResponse;
-use Lightit\Backoffice\Airlines\Domain\Models\Airline;
-use Lightit\Backoffice\Cities\Domain\Models\City;
 
 
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\postJson;
-
-
 
 it('flight should be stored successfully', function (): void {
     $flightData = [

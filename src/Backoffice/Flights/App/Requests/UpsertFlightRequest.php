@@ -25,7 +25,7 @@ class UpsertFlightRequest extends FormRequest
             'origin_id' => [
                 'required',
                 Rule::exists('cities', 'id'),
-                new AirlineCityRule(airlineId: $airlineId)
+                new AirlineCityRule(airlineId: $airlineId),
             ],
             'destination_id' => [
                 'required',
