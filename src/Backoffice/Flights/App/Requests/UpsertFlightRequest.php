@@ -7,16 +7,32 @@ namespace Lightit\Backoffice\Flights\App\Requests;
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Lightit\Backoffice\Flights\App\Rules\AirlineCityRule;
 use Lightit\Backoffice\Flights\Domain\DataTransferObjects\FlightDTO;
 
 class UpsertFlightRequest extends FormRequest
 {
     public function rules(): array
     {
+        /** @var int $airlineId */
+        $airlineId = $this->input('airline_id');
+
         return [
-            'origin_id' => ['required', Rule::exists('cities', 'id')],
-            'destination_id' => ['required', Rule::exists('cities', 'id'), 'different:origin_id'],
-            'airline_id' => ['required', Rule::exists('airlines', 'id')],
+            'airline_id' => [
+                'required',
+                Rule::exists('airlines', 'id'),
+            ],
+            'origin_id' => [
+                'required',
+                Rule::exists('cities', 'id'),
+                new AirlineCityRule(airlineId: $airlineId)
+            ],
+            'destination_id' => [
+                'required',
+                Rule::exists('cities', 'id'),
+                'different:origin_id',
+                new AirlineCityRule(airlineId: $airlineId),
+            ],
             'departure_at' => ['date', 'required'],
             'arrival_at' => ['date', 'required', 'after:departure_at'],
         ];
