@@ -11,12 +11,12 @@ use Lightit\Backoffice\Airlines\Domain\Models\Airline;
 use Lightit\Backoffice\Cities\Domain\Models\City;
 
 /**
- * @property int     $id
- * @property int     $origin_id
- * @property int     $destination_id
- * @property Airline $airline
- * @property string  $departure_time
- * @property string  $arrival_time
+ * @property int             $id
+ * @property int             $origin_id
+ * @property int             $destination_id
+ * @property Airline         $airline
+ * @property CarbonImmutable $departure_at
+ * @property CarbonImmutable $arrival_at
  * @property-read City $destinationCity
  * @property-read City $originCity
  *
