@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lightit\Backoffice\Flights\Domain\Models;
 
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Lightit\Backoffice\Airlines\Domain\Models\Airline;
@@ -29,11 +30,11 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereOriginId($value)
  *
- * @property int                          $airline_id
- * @property string                       $departure_at
- * @property string                       $arrival_at
- * @property \Carbon\CarbonImmutable|null $created_at
- * @property \Carbon\CarbonImmutable|null $updated_at
+ * @property int                  $airline_id
+ * @property CarbonImmutable      $departure_at
+ * @property CarbonImmutable      $arrival_at
+ * @property CarbonImmutable|null $created_at
+ * @property CarbonImmutable|null $updated_at
  *
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereAirlineId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereArrivalAt($value)
