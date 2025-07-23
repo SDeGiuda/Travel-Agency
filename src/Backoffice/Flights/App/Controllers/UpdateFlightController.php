@@ -19,6 +19,6 @@ class UpdateFlightController
     ): JsonResponse {
         $updatedFlight = $updateFlightAction->execute($flight, $upsertFlightRequest->toDto());
 
-        return FlightResource::make($updatedFlight)->response()->setStatusCode(JsonResponse::HTTP_OK);
+        return FlightResource::make($updatedFlight)->response();
     }
 }

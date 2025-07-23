@@ -14,7 +14,7 @@ use Lightit\Backoffice\Cities\App\Controllers\GetCityController;
 use Lightit\Backoffice\Cities\App\Controllers\ListCityController;
 use Lightit\Backoffice\Cities\App\Controllers\StoreCityController;
 use Lightit\Backoffice\Cities\App\Controllers\UpdateCityController;
-use Lightit\Backoffice\Flights\App\Controllers\DeleteFLightController;
+use Lightit\Backoffice\Flights\App\Controllers\DeleteFlightController;
 use Lightit\Backoffice\Flights\App\Controllers\GetFlightController;
 use Lightit\Backoffice\Flights\App\Controllers\ListFlightController;
 use Lightit\Backoffice\Flights\App\Controllers\StoreFlightControlller;

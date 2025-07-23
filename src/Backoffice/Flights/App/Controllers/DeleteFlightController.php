@@ -8,12 +8,12 @@ use Illuminate\Http\JsonResponse;
 use Lightit\Backoffice\Flights\Domain\Actions\DeleteFlightAction;
 use Lightit\Backoffice\Flights\Domain\Models\Flight;
 
-class DeleteFLightController
+class DeleteFlightController
 {
     public function __invoke(Flight $flight, DeleteFlightAction $deleteFlightAction): JsonResponse
     {
         $deleteFlightAction->execute($flight);
 
-        return response()->json([], JsonResponse::HTTP_NO_CONTENT);
+        return response()->json(status: JsonResponse::HTTP_NO_CONTENT);
     }
 }
