@@ -9,8 +9,9 @@ use Lightit\Backoffice\Airlines\Domain\DataTransferObjects\AirlineDTO;
 
 class UpsertAirlineRequest extends FormRequest
 {
-    const string NAME = 'name';
-    const string DESCRIPTION = 'description';
+    public const string NAME = 'name';
+
+    public const string DESCRIPTION = 'description';
 
     public function rules(): array
     {

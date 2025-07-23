@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpsertCityRequest extends FormRequest
 {
-    const string NAME = 'name';
+    public const string NAME = 'name';
 
     public function rules(): array
     {

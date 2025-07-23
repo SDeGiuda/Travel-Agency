@@ -14,11 +14,15 @@ use Lightit\Backoffice\Flights\Domain\DataTransferObjects\FlightDTO;
 
 class UpsertFlightRequest extends FormRequest
 {
-    const string AIRLINE_ID = 'airline_id';
-    const string ORIGIN_ID = 'origin_id';
-    const string DESTINATION_ID = 'destination_id';
-    const string DEPARTURE_AT = 'departure_at';
-    const string ARRIVAL_AT = 'arrival_at';
+    public const string AIRLINE_ID = 'airline_id';
+
+    public const string ORIGIN_ID = 'origin_id';
+
+    public const string DESTINATION_ID = 'destination_id';
+
+    public const string DEPARTURE_AT = 'departure_at';
+
+    public const string ARRIVAL_AT = 'arrival_at';
 
     public function rules(): array
     {
