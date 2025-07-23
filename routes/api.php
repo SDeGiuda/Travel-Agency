@@ -92,3 +92,14 @@ Route::prefix('flights')->group(static function (): void {
         Route::get('/', GetFlightController::class);
     });
 });
+
+
+Route::prefix('flights')->group(static function (): void {
+    Route::get('/', ListFlightController::class);
+    Route::post('/', StoreFlightControlller::class);
+    Route::prefix('/{flight}')->group(static function (): void {
+        Route::put('/', UpdateFlightController::class);
+        Route::delete('/', DeleteFlightController::class);
+        Route::get('/', GetFlightController::class);
+    });
+});

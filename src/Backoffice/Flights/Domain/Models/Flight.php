@@ -30,18 +30,6 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereOriginId($value)
  *
- * @property int                  $airline_id
- * @property CarbonImmutable      $departure_at
- * @property CarbonImmutable      $arrival_at
- * @property CarbonImmutable|null $created_at
- * @property CarbonImmutable|null $updated_at
- *
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereAirlineId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereArrivalAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereDepartureAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Flight whereUpdatedAt($value)
- *
  * @mixin \Eloquent
  */
 class Flight extends Model
