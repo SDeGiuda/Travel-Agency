@@ -10,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('airline_cities', function (Blueprint $table) {
+        Schema::create('airline_city', function (Blueprint $table) {
             $table->foreignId('airline_id')->constrained('airlines');
             $table->foreignId('city_id')->constrained('cities');
             $table->primary(['airline_id', 'city_id']);
@@ -20,6 +20,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('airline_allowed_cities');
+        Schema::dropIfExists('airline_city');
     }
 };

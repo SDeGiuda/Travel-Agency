@@ -8,10 +8,12 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpsertCityRequest extends FormRequest
 {
+    public const string NAME = 'name';
+
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:100'],
+            self::NAME => ['required', 'string', 'max:100'],
         ];
     }
 

@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace Lightit\Backoffice\Flights\Domain\Models;
 
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Lightit\Backoffice\Airlines\Domain\Models\Airline;
 use Lightit\Backoffice\Cities\Domain\Models\City;
 
 /**
- * @property int          $id
- * @property int          $origin_id
- * @property int          $destination_id
- * @property Airline|null $airline
- * @property string       $departure_time
- * @property string       $arrival_time
+ * @property int             $id
+ * @property int             $origin_id
+ * @property int             $destination_id
+ * @property Airline         $airline
+ * @property CarbonImmutable $departure_at
+ * @property CarbonImmutable $arrival_at
  * @property-read City $destinationCity
  * @property-read City $originCity
  *
@@ -33,7 +34,7 @@ use Lightit\Backoffice\Cities\Domain\Models\City;
  */
 class Flight extends Model
 {
-    protected $guarded = ['id'];
+    public $guarded = ['id'];
 
     /**
      * @return BelongsTo<Airline, $this>

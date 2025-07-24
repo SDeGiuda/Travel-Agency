@@ -25,6 +25,14 @@ use Lightit\Backoffice\Flights\Domain\Models\Flight;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline whereNumberOfFlights($value)
  *
+ * @property string                       $description
+ * @property \Carbon\CarbonImmutable|null $created_at
+ * @property \Carbon\CarbonImmutable|null $updated_at
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Airline whereUpdatedAt($value)
+ *
  * @mixin \Eloquent
  */
 class Airline extends Model
